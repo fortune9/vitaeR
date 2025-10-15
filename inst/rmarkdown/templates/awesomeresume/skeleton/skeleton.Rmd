@@ -1,0 +1,52 @@
+````rmd
+---
+name: Jane
+surname: Doe
+position: "Researcher"
+date: "`r format(Sys.time(), '%B %Y')`"
+output:
+  vitae::awesomeresume:
+    page_total: true
+    show_footer: true
+# Section spacing: LaTeX vspace after section header, e.g. '-1mm' or '0.5mm'
+section_spacing: '-1mm'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+# Profile
+
+Short profile text goes here. This template uses tighter margins and black-only fonts for compact printing.
+
+# Experience
+
+```{r}
+tribble(
+  ~Year, ~Role, ~Org,
+  2020, "Scientist", "Example Institute"
+) %>%
+  brief_entries("{Role}", Year, Org)
+```
+
+````
+---
+title: "Template Title"
+author: "Your Name"
+date: "The Date"
+output: output_format
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Adding an RMarkdown Template
+
+This file is what a user will see when they select your template. Make sure that you update the fields in the yaml header. In particular you will want to update the `output` field to whatever format your template requires.
+
+This is a good place to demonstrate special features that your template provides. Ideally it should knit out-of-the-box, or at least contain clear instructions as to what needs changing.
+
+Finally, be sure to remove this message!
