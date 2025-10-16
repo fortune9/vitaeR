@@ -35,7 +35,7 @@ cv_document <- function(..., pandoc_args = NULL, pandoc_vars = NULL,
       latex_engine = base$pandoc$latex_engine
     ),
 
-    pre_processor = function (metadata, input_file, runtime, knit_meta,
+    pre_processor = function(metadata, input_file, runtime, knit_meta,
                               files_dir, output_dir) {
       # Add citations to front matter yaml, there may be a better way to do this.
       # For example, @* wildcard. Keeping as is to avoid unintended side effects.
