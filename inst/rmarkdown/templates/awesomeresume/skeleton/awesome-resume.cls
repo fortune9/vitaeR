@@ -39,6 +39,11 @@
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{article}
 }
+% Define my own fonts
+\DeclareOption{times}{\def\fontoption{times}}
+\DeclareOption{roboto}{\def\fontoption{roboto}}
+% Add other font options as needed
+
 \ProcessOptions\relax
 \LoadClass{article}
 
@@ -166,25 +171,69 @@
 % Set the FontAwesome font to be up-to-date.
 %\newfontfamily\FA[Path=\@fontdir]{FontAwesome}
 % Set font for header (default is Roboto)
-\newfontfamily\headerfont[
-  Path=\@fontdir,
-  UprightFont=*-Regular,
-  ItalicFont=*-Italic,
-  BoldFont=*-Bold,
-  BoldItalicFont=*-BoldItalic,
-]{Roboto}
+%\newfontfamily\headerfont[
+%  Path=\@fontdir,
+%  UprightFont=*-Regular,
+%  ItalicFont=*-Italic,
+%  BoldFont=*-Bold,
+%  BoldItalicFont=*-BoldItalic,
+%]{Roboto}
+%
+%\newfontfamily\headerfontlight[
+%  Path=\@fontdir,
+%  UprightFont=*-Thin,
+%  ItalicFont=*-ThinItalic,
+%  BoldFont=*-Medium,
+%  BoldItalicFont=*-MediumItalic,
+%]{Roboto}
+%
+%\newcommand*{\footerfont}{\sourcesanspro}
+%\newcommand*{\bodyfont}{\sourcesanspro}
+%\newcommand*{\bodyfontlight}{\sourcesansprolight}
 
-\newfontfamily\headerfontlight[
-  Path=\@fontdir,
-  UprightFont=*-Thin,
-  ItalicFont=*-ThinItalic,
-  BoldFont=*-Medium,
-  BoldItalicFont=*-MediumItalic,
-]{Roboto}
-
-\newcommand*{\footerfont}{\sourcesanspro}
-\newcommand*{\bodyfont}{\sourcesanspro}
-\newcommand*{\bodyfontlight}{\sourcesansprolight}
+% use conditional to set fonts based on class option
+\ifthenelse{\equal{\fontoption}{times}}{%
+  % Times New Roman font
+  \newfontfamily\headerfont{Times New Roman}[
+      UprightFont=*-Regular,
+      BoldFont=*-Bold,
+    ]
+  \newfontfamily\headerfontlight{Times New Roman}[
+      UprightFont=*-Regular,
+      BoldFont=*-Bold,
+    ]
+  \newcommand*{\footerfont}{\sourcesanspro}
+  \newcommand*{\bodyfont}{Times New Roman}
+  \newcommand*{\bodyfontlight}{Times New Roman}
+}{%
+  \ifthenelse{\equal{\fontoption}{roboto}}{%
+    % Roboto font
+    \newfontfamily\headerfont[
+      Path=\@fontdir,
+      UprightFont=*-Regular,
+      ItalicFont=*-Italic,
+      BoldFont=*-Bold,
+      BoldItalicFont=*-BoldItalic,
+    ]{Roboto}
+    \newfontfamily\headerfontlight[
+      Path=\@fontdir,
+      UprightFont=*-Thin,
+      ItalicFont=*-ThinItalic,
+      BoldFont=*-Medium,
+      BoldItalicFont=*-MediumItalic,
+    ]{Roboto}
+    \newcommand*{\footerfont}{\sourcesanspro}
+    \newcommand*{\bodyfont}{\sourcesanspro}
+    \newcommand*{\bodyfontlight}{\sourcesansprolight}
+  }{%
+    % Default font (Sourcesanspro)
+    \newcommand*{\headerfont}{\sourcesanspro}
+    \newcommand*{\headerfontlight}{\sourcesansprolight}
+    \newcommand*{\footerfont}{\sourcesanspro}
+    \newcommand*{\bodyfont}{\sourcesanspro}
+    \newcommand*{\bodyfontlight}{\sourcesansprolight}
+  }%
+}%
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
