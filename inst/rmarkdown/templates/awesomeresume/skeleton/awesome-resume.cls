@@ -16,7 +16,11 @@
 % Class license:
 % LPPL v1.3c (http://www.latex-project.org/lppl)
 %
-
+% This class was modified by Zhenguo Zhang with the following changes:
+% - Changed some font styles to have them easy to read, such as making position names bold and descriptions normal.
+% - Put all the personal information in one line in the header to save space.
+% - Added a command \fullname to directly set full name.
+% - Last modified: 2025-10-18
 
 %-------------------------------------------------------------------------------
 %                Identification
