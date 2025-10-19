@@ -25,6 +25,18 @@ awesomeresume <- function(..., latex_engine = "xelatex", page_total = FALSE,
               template = template, latex_engine = latex_engine)
 }
 
+# these are the functions that generate the LaTeX code for different entry formats.
+# if I want to define a new entry format, I need to create a new function here and
+# then use set_entry_formats() to register it for use with the current template.
+# For that to work, I also need to define a function to construct corresponding R
+# objects so that the new entry format can be used in the Rmd document. But how?
+# I found the clue: the key words "brief" and "detailed" in the new_entry_formats()
+# are called in the knit_print.vitae_brief() and knit_print.vitae_detailed()
+# functions in brief.R and detailed.R, respectively. So I can create new R functions
+# similar to brief_entries() and detailed_entries() to create new entry types by assigning
+# the class names accordingly, e.g., "vitae_compact" and "vitae_fancy", and then
+# define knit_print.vitae_compact() and knit_print.vitae_fancy() functions to call the corresponding
+# entry format functions defined here.
 awesome_resume_entries <- new_entry_formats(
   brief = function(what, when, with){
     paste(
