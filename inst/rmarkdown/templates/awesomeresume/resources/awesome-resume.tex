@@ -57,7 +57,13 @@ $if(profilepic)$
 \photo{$profilepic$}
 $endif$
 % name takes two arguments: firstname and lastname (surname optional)
-\name{$name$}{$if(surname)$$surname$$endif$}
+% consider the situations that users may provide the full name in 'name' field or separately in 'firstname' and 'surname' fields
+$if(name)$
+    \fullname{$name$}%
+    %\name{\@firstname}{\@lastname}%
+$else$
+    \name{$firstname$}{$if(surname)$$surname$$else$$endif$}%
+$endif$
 
 $if(position)$
 \position{$position$}
