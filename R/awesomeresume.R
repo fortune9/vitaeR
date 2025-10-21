@@ -42,7 +42,9 @@ awesome_resume_entries <- new_entry_formats(
     paste(
       c(
         "\\begin{cvhonors}",
-        glue_alt("\t\\cvhonor{}{<<what>>}{<<with>>}{<<when>>}"),
+        # cvhonor takes 4 arguments: \cvhonor{<position>}{<title>}{<location>}{<date>}
+        # so here we leave position empty
+        glue_alt("\t\\cvhonor{}{<<what>>}{<<with>>}{<<when>>}"), 
         "\\end{cvhonors}"
       ),
       collapse = "\n"
