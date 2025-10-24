@@ -166,9 +166,9 @@ $endif$
 % for elements of entry
 \renewcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \renewcommand*{\entrypositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\itshape\color{graytext} #1}}
-\renewcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\renewcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{awesome} #1}}
-\renewcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\upshape\color{text} #1}}
+\renewcommand*{\entrydatestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\renewcommand*{\entrylocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\upshape\color{text} #1}}
 
 % For elements of honor
 \renewcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
@@ -178,17 +178,19 @@ $endif$
 
 % Change the definition of \cventry to reduce spacing among sub-sections
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-\newcommand*{\cventry}[5]{
+\renewcommand*{\cventry}[5]{
 %  \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}%
   \setlength{\extrarowheight}{0pt}%
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}%
-    \ifempty{#2#3}{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}%
+    \ifempty{#2#3}{\entrypositionstyle{#1} & \entrydatestyle{#4}}%
       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\%
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}%
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}%
+      \entrypositionstyle{#1} & \entrydatestyle{#4}}%
+    % check if description is empty, otherwise output nothing
+    \ifempty{#5}{}{\\ \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}}%
   \end{tabular*}%
-  \vspace{-2.0mm} % adjust this value to change spacing after each entry
+  % adjust this value to change spacing after each entry
+  \ifempty{#5}{\vspace{0.1mm}}{\vspace{-1.8mm}}
 }
 
 % Reduce spacing inside entries

@@ -51,15 +51,19 @@ awesome_resume_entries <- new_entry_formats(
     )
   },
   detailed = function(what, when, with, where, why){
+    # combine the 'why' items into a LaTeX cvitems environment for each entry.
+    # when empty, output nothing
     why <- lapply(why, function(x) {
       if(length(x) == 0) {
-        "{}\\vspace{-4.0mm}"
+        #"{}\\vspace{-4.0mm}"
+        "{}"
       } else {
         paste(c("{\\begin{cvitems}", paste("\\item", x), "\\end{cvitems}}"),
               collapse = "\n")
       }
     })
 
+    # usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
     paste(c(
       "\\begin{cventries}",
       glue_alt("\t\\cventry{<<what>>}{<<with>>}{<<where>>}{<<when>>}<<why>>"),
