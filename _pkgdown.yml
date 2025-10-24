@@ -21,6 +21,7 @@ reference:
   desc: >
     CV templates made available in the vitae package.
   contents:
+    - awesomeresume
     - awesomecv
     - hyndman
     - latexcv
