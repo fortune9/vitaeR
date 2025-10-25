@@ -50,6 +50,28 @@ awesome_resume_entries <- new_entry_formats(
       collapse = "\n"
     )
   },
+  honor = function(what, when, with, where){
+    paste(
+      c(
+        "\\begin{cvhonors}",
+        # cvhonor takes 4 arguments: \cvhonor{<position>}{<title>}{<location>}{<date>}
+        glue_alt("\t\\cvhonor{<<with>>}{<<what>>}{<<where>>}{<<when>>}"),
+        "\\end{cvhonors}"
+      ),
+      collapse = "\n"
+    )
+  },
+  skill = function(what, with){
+    paste(
+      c(
+        "\\begin{cvskills}",
+        # cvskill takes 2 arguments: \cvskill{<type>}{<skillset>}
+        glue_alt("\t\\cvskill{<<what>>}{<<with>>}"),
+        "\\end{cvskills}"
+      ),
+      collapse = "\n"
+    )
+  },
   detailed = function(what, when, with, where, why){
     # combine the 'why' items into a LaTeX cvitems environment for each entry.
     # when empty, output nothing
