@@ -49,7 +49,8 @@ knit_print.vitae_honor <- function(x, options, ...) {
   
   x[is.na(x)] <- ""
 
-  if(!(x%@%"protect")){
+  if(!(x%@%"protect")){ # check protect attribute, %@% imported from rlang
+    # original protect_tex_input is defined in utils.R
     protect_tex_input <- identity
   }
 
