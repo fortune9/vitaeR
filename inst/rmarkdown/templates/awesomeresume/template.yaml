@@ -1,3 +1,7 @@
 name: awesomeresume
-description: A compact, black-and-white resume template based on Awesome-CV with tighter margins
+description: >
+  A compact, black-and-white resume template based on Awesome-CV with tighter margins.
+  Supports all standard entry types plus specialized honor_entries() and skill_entries() 
+  for awards and skills sections. Features include customizable section spacing, 
+  monochrome output, and optimized layout for professional resumes.
 create_dir: true

@@ -30,7 +30,7 @@ $endif$
 $if(headcolor)$
 \definecolor{awesome}{HTML}{$headcolor$}
 $else$
-\definecolor{awesome}{HTML}{000000}
+%\definecolor{awesome}{HTML}{000000}
 \colorlet{text}{black}
 \colorlet{graytext}{black}
 \colorlet{lighttext}{black}
@@ -45,7 +45,7 @@ $else$
 $endif$
 
 % Disable section color highlighting
-\setbool{acvSectionColorHighlight}{false}
+\setbool{acvSectionColorHighlight}{true} % enable again to restore color highlights
 
 % Color for highlights (left in but set to black above)
 
@@ -138,8 +138,9 @@ $endfor$
 \renewcommand{\acvHeaderAfterNameSkip}{0mm}
 \renewcommand{\acvHeaderAfterPositionSkip}{0mm}
 \renewcommand{\acvHeaderAfterAddressSkip}{0mm}
-\renewcommand{\acvHeaderAfterSocialSkip}{0.5mm}
+\renewcommand{\acvHeaderAfterSocialSkip}{2.0mm}
 \renewcommand{\acvHeaderAfterQuoteSkip}{1mm}
+\renewcommand{\acvSectionTopSkip}{1mm}
 
 % Allow YAML variable `section_spacing` (LaTeX length, e.g. '-1mm' or '0.5mm')
 $if(section_spacing)$
@@ -156,7 +157,7 @@ $endif$
 \renewcommand*{\headerlastnamestyle}[1]{{\fontsize{20pt}{1em}\headerfont\bfseries\color{text} #1}}
 \renewcommand*{\sectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \renewcommand*{\subsectionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\renewcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
+\renewcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{text} #1}}
 \renewcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \renewcommand*{\headersocialstyle}[1]{{\fontsize{7pt}{1em}\headerfont\color{text} #1}}
 \renewcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
@@ -167,14 +168,29 @@ $endif$
 \renewcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \renewcommand*{\entrypositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\itshape\color{graytext} #1}}
 \renewcommand*{\entrydatestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\renewcommand*{\entrylocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\entrylocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{text} #1}}
 \renewcommand*{\descriptionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\upshape\color{text} #1}}
 
+% For elements of skill
+\renewcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\skillsetstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{text} #1}}
+
 % For elements of honor
-\renewcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
-\renewcommand*{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\renewcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
-\renewcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+
+% define new enviroment for cventries so that we can adjust spacing, depending on whether description is present
+\newcommand{\acvEntriesBottomSkip}{1mm}
+% Define an environment for cventry
+\RenewDocumentEnvironment{cventries}{o}{
+    \vspace{\acvSectionContentTopSkip}
+    \begin{center}
+}{
+    \end{center}
+    \ifstrequal{#1}{bottomspace}{\vspace{\acvEntriesBottomSkip}}{}
+}
 
 % Change the definition of \cventry to reduce spacing among sub-sections
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
@@ -191,6 +207,32 @@ $endif$
   \end{tabular*}%
   % adjust this value to change spacing after each entry
   \ifempty{#5}{\vspace{0.1mm}}{\vspace{-1.8mm}}
+}
+
+% Modify the environment cvskill to allow more space after the section title
+\renewenvironment{cvskills}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-0.2mm}
+  \begin{center}
+    \setlength\tabcolsep{1ex}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+
+% Modify the environment cvhonors to allow more space after the section title
+\renewenvironment{cvhonors}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-0.2mm}
+  \begin{center}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+}{%
+    \end{tabular*}
+  \end{center}
 }
 
 % Reduce spacing inside entries
