@@ -143,6 +143,7 @@ $endfor$
 \renewcommand{\acvSectionTopSkip}{1mm}
 
 % Allow YAML variable `section_spacing` (LaTeX length, e.g. '-1mm' or '0.5mm')
+% to adjust spacing after section titles
 $if(section_spacing)$
 \makeatletter
 \let\origsection\section
@@ -179,7 +180,7 @@ $endif$
 \renewcommand*{\honortitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
 \renewcommand*{\honorpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \renewcommand*{\honordatestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
-\renewcommand*{\honorlocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\slshape\color{text} #1}}
 
 % define new enviroment for cventries so that we can adjust spacing, depending on whether description is present
 \newcommand{\acvEntriesBottomSkip}{1mm}
@@ -220,20 +221,28 @@ $endif$
 }{%
     \end{tabular*}
   \end{center}
+  \vspace{\acvEntriesBottomSkip}
 }
 
-% Modify the environment cvhonors to allow more space after the section title
+% Modify the environment cvhonors to allow more space after the section title and auto stretching in cells
 \renewenvironment{cvhonors}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-0.2mm}
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} c l r}
 }{%
     \end{tabular*}
   \end{center}
 }
+
+% add space between #1 and #2
+% Usage: \cvhonor{<institution>}{<award>}{<location>}{<date>}
+\renewcommand*{\cvhonor}[4]{%
+  \honordatestyle{#4} & \honorpositionstyle{#2},\quad\honortitlestyle{#1} & \honorlocationstyle{#3} \\
+}
+
 
 % Reduce spacing inside entries
 \setlength{\parskip}{0pt}
