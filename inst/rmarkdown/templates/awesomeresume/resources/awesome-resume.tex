@@ -240,7 +240,7 @@ $endif$
 % add space between #1 and #2
 % Usage: \cvhonor{<institution>}{<award>}{<location>}{<date>}
 \renewcommand*{\cvhonor}[4]{%
-  \honordatestyle{#4} & \honorpositionstyle{#2},\quad\honortitlestyle{#1} & \honorlocationstyle{#3} \\
+  \honordatestyle{#4}\hspace{1em} & \honorpositionstyle{#2} \ifempty{#1}{}{,\quad\honortitlestyle{#1}} & \honorlocationstyle{#3} \\
 }
 
 
