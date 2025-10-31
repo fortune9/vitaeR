@@ -198,15 +198,22 @@
 % use conditional to set fonts based on class option
 \ifthenelse{\equal{\fontoption}{times}}{%
   % Times New Roman font
-  \newfontfamily\headerfont{Times New Roman}[
-      BoldFont=* Bold,
-    ]
-  \newfontfamily\headerfontlight{Times New Roman}[
-      BoldFont=* Bold,
-    ]
+  \newfontfamily\headerfont[
+    UprightFont    = {Times New Roman},       % The regular font (can also be the main argument)
+    ItalicFont     = {Times New Roman Italic},      % The italic variant
+    BoldFont       = {Times New Roman Bold},        % The bold variant
+    BoldItalicFont = {Times New Roman Bold Italic}  % The bold-italic variant
+    ]{Times New Roman}
+  \newfontfamily\headerfontlight[
+      Path=\@fontdir,
+      UprightFont=*-Thin,
+      ItalicFont=*-ThinItalic,
+      BoldFont=*-Medium,
+      BoldItalicFont=*-MediumItalic,
+    ]{Roboto}
   \newcommand*{\footerfont}{\sourcesanspro}
-  \newcommand*{\bodyfont}{Times New Roman}
-  \newcommand*{\bodyfontlight}{Times New Roman}
+  \newcommand*{\bodyfont}{\headerfont}
+  \newcommand*{\bodyfontlight}{\headerfontlight}
 }{%
   \ifthenelse{\equal{\fontoption}{roboto}}{%
     % Roboto font
