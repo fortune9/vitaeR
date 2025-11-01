@@ -7,9 +7,13 @@
 skill_entries(data, type, details, .protect = TRUE)
 }
 \arguments{
+\item{data}{A \code{data.frame} or \code{tibble} containing the skill entries}
+
 \item{type}{Skill type/category}
 
 \item{details}{Skill details/descriptions}
+
+\item{.protect}{Logical, if TRUE (default) protects special LaTeX characters in input}
 }
 \value{
 Object of class \code{vitae_skill}

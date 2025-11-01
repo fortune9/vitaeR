@@ -7,7 +7,7 @@
 honor_entries(data, what, when = NA, with = NA, where = NA, .protect = TRUE)
 }
 \arguments{
-\item{data}{A data frame containing the honor entries}
+\item{data}{A \code{data.frame} or \code{tibble} containing the honor entries}
 
 \item{what}{Honor title/achievement}
 

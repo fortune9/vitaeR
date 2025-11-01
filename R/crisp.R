@@ -1,23 +1,32 @@
-#' Awesomeresume template (compact, monochrome)
+#' Crisp template (clean, modern resume)
 #'
-#' A compact resume template based on Awesome-CV with tighter margins and no color.
+#' A clean, modern resume template with customizable typography and layout options.
 #'
 #' @param ... Arguments passed to \code{\link[vitae]{cv_document}}.
 #' @inheritParams rmarkdown::pdf_document
 #' @param page_total If TRUE, show total pages in footer.
 #' @param show_footer If TRUE, include footer with name and page numbers.
+#'
+#' @section Preview:
+#' `r insert_preview("crisp")`
+#' 
+#' @return An R Markdown output format object.
+#'
+#' @author Zhenguo Zhang
+#'
 #' @export
-awesomeresume <- function(..., latex_engine = "xelatex", page_total = FALSE,
-                          show_footer = TRUE) {
-  template <- system.file("rmarkdown", "templates", "awesomeresume",
-                          "resources", "awesome-resume.tex",
+crisp <- function(..., latex_engine = "xelatex", page_total = FALSE,
+                  show_footer = TRUE) {
+
+  template <- system.file("rmarkdown", "templates", "crisp",
+                          "resources", "crisp.tex",
                           package = "vitae"
   )
 
-  set_entry_formats(awesome_resume_entries)
-  # Reuse supporting files (class, fonts) from the awesomeresume skeleton
-  # (the class file was renamed to awesome-resume.cls)
-  copy_supporting_files("awesomeresume")
+  set_entry_formats(crisp_entries)
+  # Reuse supporting files (class, fonts) from the crisp skeleton
+  # (the class file was renamed to crisp.cls)
+  copy_supporting_files("crisp")
   pandoc_vars <- list()
   if(page_total) pandoc_vars$page_total <- TRUE
   if(show_footer) pandoc_vars$show_footer <- TRUE
@@ -37,7 +46,7 @@ awesomeresume <- function(..., latex_engine = "xelatex", page_total = FALSE,
 # the class names accordingly, e.g., "vitae_compact" and "vitae_fancy", and then
 # define knit_print.vitae_compact() and knit_print.vitae_fancy() functions to call the corresponding
 # entry format functions defined here.
-awesome_resume_entries <- new_entry_formats(
+crisp_entries <- new_entry_formats(
   brief = function(what, when, with){
     paste(
       c(

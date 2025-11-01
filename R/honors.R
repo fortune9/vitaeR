@@ -1,6 +1,6 @@
 #' Create honor entries
 #'
-#' @param data A data frame containing the honor entries
+#' @param data A `data.frame` or `tibble` containing the honor entries
 #' @param what Honor title/achievement
 #' @param when Date or time period of honor
 #' @param with Organization/institution providing the honor

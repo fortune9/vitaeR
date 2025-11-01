@@ -25,9 +25,39 @@ with helpful functions to add content to the documents.
 
 # vitae (forked and extended)
 
-This repository is a local fork of the vitae package available at
-https://github.com/mitchelloharawild/vitae. It includes the original
-vitae templates and tools for producing Résumés/CVs from R Markdown, and
+This repository is a fork of the [vitae package](https://github.com/mitchelloharawild/vitae) with additional templates and features. Key additions include:
+
+## New Templates
+
+### crisp
+
+A clean, modern resume template with extensive customization options:
+
+- **Typography Options**:
+  - Source Sans Pro (default): Modern, readable font
+  - Times New Roman: Classic, professional look
+  - Roboto: Contemporary, minimal style
+  
+- **Layout Features**:
+  - Optimized margins (0.5" sides, 0.66" top/bottom)
+  - Customizable section spacing
+  - Single-line header with inline contact details
+  - Optional page numbering and footer
+  
+- **Entry Types**:
+  - Standard entries (detailed_entries, brief_entries)
+  - Honor entries (honor_entries) for awards and achievements
+  - Skill entries (skill_entries) for expertise sections
+  
+- **YAML Options**:
+  ```yaml
+  output:
+    vitae::crisp:
+      font: roboto          # options: times, roboto, default
+      page_total: true      # show "page X of Y"
+      show_footer: true     # include footer
+      section_spacing: -1mm # adjust section spacing
+  ```
 adds a custom, compact resume format `awesomeresume`.
 
 Important notes

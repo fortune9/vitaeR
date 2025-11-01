@@ -1,17 +1,17 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
-% Awesome CV LaTeX Template for CV/Resume (adapted for awesomeresume)
+% Crisp LaTeX Template for CV/Resume
 %
-% Adapted to be an Rmarkdown template by Zhenguo Zhang
-% Modified for awesomeresume: tighter margins and monochrome output
+% A clean, modern resume template with customizable typography
+% Modified by Zhenguo Zhang for the vitae R package
 %
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$$else$a4paper$endif$,$for(classoption)$$classoption$$sep$,$endfor$]{awesome-resume}
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$$else$a4paper$endif$,$for(classoption)$$classoption$$sep$,$endfor$]{crisp}
 
-% Configure page margins with geometry (awesomeresume defaults)
+% Configure page margins with geometry (crisp defaults)
 $if(geometry)$
 \usepackage{geometry}
 \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
@@ -142,12 +142,12 @@ $endfor$
 \renewcommand{\acvHeaderAfterQuoteSkip}{1mm}
 \renewcommand{\acvSectionTopSkip}{1mm}
 
-% Allow YAML variable `section_spacing` (LaTeX length, e.g. '-1mm' or '0.5mm')
+% Allow YAML variable `spacing_after_section_title` (LaTeX length, e.g. '-1mm' or '0.5mm')
 % to adjust spacing after section titles
-$if(section_spacing)$
+$if(spacing_after_section_title)$
 \makeatletter
 \let\origsection\section
-\renewcommand{\section}[1]{\origsection{#1}\vspace{$section_spacing$}}
+\renewcommand{\section}[1]{\origsection{#1}\vspace{$spacing_after_section_title$}}
 \makeatother
 $endif$
 

@@ -1,7 +1,9 @@
 #' Create skill entries
 #'
+#' @param data A `data.frame` or `tibble` containing the skill entries
 #' @param type Skill type/category
 #' @param details Skill details/descriptions
+#' @param .protect Logical, if TRUE (default) protects special LaTeX characters in input
 #'
 #' @return Object of class \code{vitae_skill}
 #' @importFrom rlang enexpr expr_text !!
