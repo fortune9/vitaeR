@@ -33,6 +33,12 @@ test_that("moderncv", {
 test_that("latexcv", {
   expect_knit("latexcv")
 })
+
 test_that("markdowncv", {
   expect_knit("markdowncv")
 })
+
+test_that("crisp", {
+  expect_knit("crisp")
+})
+
