@@ -52,7 +52,7 @@ Create your resume by setting up an R Markdown document with the following YAML 
 title: "Your Name"
 author: Your Name
 date: "`r Sys.Date()`"
-output: vitae::awesomeresume
+output: vitae::crisp
 position: "Data Scientist"
 address: "123 Main Street, City, Country"
 phone: "+1 234 567 8900"
@@ -150,7 +150,7 @@ Here's a minimal working example combining all entry types:
 ---
 title: "Professional Resume"
 author: Jane Doe
-output: vitae::awesomeresume
+output: vitae::crisp
 position: "Data Scientist"
 email: "jane.doe@email.com"
 github: "janedoe"

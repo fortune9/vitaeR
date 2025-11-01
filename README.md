@@ -58,24 +58,24 @@ A clean, modern resume template with extensive customization options:
       show_footer: true     # include footer
       section_spacing: -1mm # adjust section spacing
   ```
-adds a custom, compact resume format `awesomeresume`.
+adds a custom, compact resume format `crisp`.
 
 Important notes
 - This repository is based on the upstream 'vitae' project by
   Mitchell O'Hara-Wild: https://github.com/mitchelloharawild/vitae
 - The content in this fork includes additional local changes. The main
-  change in this fork is the addition of the `awesomeresume` output
+  change in this fork is the addition of the `crisp` output
   format (see details below).
 
 What I added in this fork
-- New R Markdown output format: `vitae::awesomeresume`
+- New R Markdown output format: `vitae::crisp`
   - Purpose: a compact, black-and-white resume template based on the
     Awesome-CV layout but adjusted for tighter margins, denser
     typography, and an inline contact/header layout.
   - Files added/modified for the new format are under:
-    - `inst/rmarkdown/templates/awesomeresume/` (template, resources,
+    - `inst/rmarkdown/templates/crisp/` (template, resources,
       skeleton)
-    - `R/awesomeresume.R` (the R wrapper that registers the output
+    - `R/crisp.R` (the R wrapper that registers the output
       format)
   - Key features:
     - Tighter document margins: left/right = 0.5in, top/bottom = 0.66in
@@ -101,7 +101,7 @@ Note: building/using the templates requires a working LaTeX setup
 (XeLaTeX recommended). See the `tinytex` package for a simple setup
 option if you don't already have LaTeX installed.
 
-Quick example: using the new awesomeresume format
+Quick example: using the new crisp format
 
 Create an R Markdown document with the following YAML header:
 
@@ -109,7 +109,7 @@ Create an R Markdown document with the following YAML header:
 ---
 title: "Resume"
 output:
-  vitae::awesomeresume: default
+  vitae::crisp: default
 name: "Jane"
 surname: "Doe"
 position: "Data Scientist"
@@ -127,8 +127,8 @@ rmarkdown::render('your_resume.Rmd')
 ```
 
 Development notes & testing
-- The awesomeresume format copies supporting files from
-  `inst/rmarkdown/templates/awesomeresume/skeleton/` at render time. The
+- The crisp format copies supporting files from
+  `inst/rmarkdown/templates/crisp/skeleton/` at render time. The
   class file shipped with the skeleton is named `awesome-resume.cls` and
   is requested by the template's `\\documentclass{awesome-resume}` line.
 - If you see LaTeX errors about missing class files, ensure the working
@@ -138,7 +138,7 @@ Development notes & testing
 Want different defaults?
 - The template intentionally sets monochrome defaults. If you prefer
   colored accents or a different margin setup, edit
-  `inst/rmarkdown/templates/awesomeresume/resources/awesomeresume-cv.tex`.
+  `inst/rmarkdown/templates/crisp/resources/crisp-cv.tex`.
 
 License & upstream
 - This fork follows the same license and contribution policies as the
