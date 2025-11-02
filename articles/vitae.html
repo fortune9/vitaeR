@@ -52,6 +52,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/crisp.html">Using the Crisp Template</a>
+    </li>
+    <li>
       <a href="../articles/data.html">Data sources for vitae</a>
     </li>
     <li>
@@ -118,11 +121,59 @@ find some templates from the vitae package to use.</p>
 <p>If not using RStudio, you can create a new <code>*.Rmd</code>
 document and use an output format that is provided by the package. A
 list of output formats provided by the package can be found on the
-package website: <a href="https://pkg.mitchelloharawild.com/vitae/#templates" class="uri">https://pkg.mitchelloharawild.com/vitae/#templates</a>.
+package website: <a href="https://pkg.mitchelloharawild.com/vitae/#templates" class="external-link uri">https://pkg.mitchelloharawild.com/vitae/#templates</a>.
 Examples of a YAML header that use one of these output formats is shown
 below.</p>
 <p>Like other R Markdown documents, the file is split into two sections:
 the YAML header, and the main body.</p>
+<div class="section level3">
+<h3 id="available-templates">Available Templates<a class="anchor" aria-label="anchor" href="#available-templates"></a>
+</h3>
+<p>The package includes several CV templates:</p>
+<ul>
+<li>
+<code>hyndman</code>: Inspired by Rob Hyndman’s CV</li>
+<li>
+<code>awesomecv</code>: Based on the LaTeX CV template
+Awesome-CV</li>
+<li>
+<code>crisp</code>: A clean, modern template with customizable
+typography (Source Sans Pro, Times, Roboto)</li>
+<li>
+<code>moderncv</code>: Classic and modern style CVs</li>
+<li>
+<code>twentyseconds</code>: A one-page, two-column CV</li>
+<li>
+<code>latexcv</code>: Various CV styles from the LaTeX CV
+project</li>
+<li>
+<code>markdowncv</code>: A markdown CV template</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="entry-types">Entry Types<a class="anchor" aria-label="anchor" href="#entry-types"></a>
+</h3>
+<p>The package provides several entry types to structure your CV
+content:</p>
+<ul>
+<li>
+<code><a href="../reference/cv_entries.html">detailed_entries()</a></code>: For comprehensive entries like work
+experience or education</li>
+<li>
+<code><a href="../reference/cv_entries.html">brief_entries()</a></code>: For shorter items like publications or
+certifications</li>
+<li>
+<code><a href="../reference/honor_entries.html">honor_entries()</a></code>: For awards and achievements (available
+in crisp)</li>
+<li>
+<code><a href="../reference/skill_entries.html">skill_entries()</a></code>: For listing skills and expertise
+(available in crisp)</li>
+</ul>
+<p>Each entry type is designed for specific content and formatting
+needs. The <code>crisp</code> template supports all entry types, with
+<code><a href="../reference/honor_entries.html">honor_entries()</a></code> and <code><a href="../reference/skill_entries.html">skill_entries()</a></code>
+specifically optimized for compact, professional presentation.</p>
+</div>
 <div class="section level3">
 <h3 id="the-yaml-header">The YAML header<a class="anchor" aria-label="anchor" href="#the-yaml-header"></a>
 </h3>

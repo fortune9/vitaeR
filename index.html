@@ -13,7 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Curriculum Vitae for R Markdown">
 <meta property="og:description" content="Provides templates and functions to simplify the production and maintenance of curriculum vitae.">
-<meta property="og:image" content="https://pkg.mitchelloharawild.com/vitae/logo.png">
+<meta property="og:image" content="https://fortune9.github.io/vitaeR/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/crisp.html">Using the Crisp Template</a>
+    </li>
+    <li>
       <a href="articles/data.html">Data sources for vitae</a>
     </li>
     <li>
@@ -104,38 +107,84 @@
 <div class="section level1">
 <h1 id="vitae-forked-and-extended">vitae (forked and extended)<a class="anchor" aria-label="anchor" href="#vitae-forked-and-extended"></a>
 </h1>
-<p>This repository is a local fork of the vitae package available at <a href="https://github.com/mitchelloharawild/vitae" class="external-link uri">https://github.com/mitchelloharawild/vitae</a>. It includes the original vitae templates and tools for producing Résumés/CVs from R Markdown, and adds a custom, compact resume format <code>awesomeresume</code>.</p>
-<p>Important notes - This repository is based on the upstream ‘vitae’ project by Mitchell O’Hara-Wild: <a href="https://github.com/mitchelloharawild/vitae" class="external-link uri">https://github.com/mitchelloharawild/vitae</a> - The content in this fork includes additional local changes. The main change in this fork is the addition of the <code>awesomeresume</code> output format (see details below).</p>
-<p>What I added in this fork - New R Markdown output format: <code><a href="reference/awesomeresume.html">vitae::awesomeresume</a></code> - Purpose: a compact, black-and-white resume template based on the Awesome-CV layout but adjusted for tighter margins, denser typography, and an inline contact/header layout. - Files added/modified for the new format are under: - <code>inst/rmarkdown/templates/awesomeresume/</code> (template, resources, skeleton) - <code>R/awesomeresume.R</code> (the R wrapper that registers the output format) - Key features: - Tighter document margins: left/right = 0.5in, top/bottom = 0.66in - Monochrome defaults (fonts and section highlight colors set to black in the template) - A YAML variable <code>section_spacing</code> to let you reduce vertical spacing below section headers, e.g. <code>section_spacing: "-1mm"</code> - Compact default header that keeps name large and prints position + contact items inline (they naturally wrap when too long)</p>
+<p>This repository is a fork of the <a href="https://github.com/mitchelloharawild/vitae" class="external-link">vitae package</a> with additional templates and features. Key additions include:</p>
+<div class="section level2">
+<h2 id="new-templates">New Templates<a class="anchor" aria-label="anchor" href="#new-templates"></a>
+</h2>
+<div class="section level3">
+<h3 id="crisp">crisp<a class="anchor" aria-label="anchor" href="#crisp"></a>
+</h3>
+<p>A clean, modern resume template with extensive customization options:</p>
+<ul>
+<li>
+<p><strong>Typography Options</strong>:</p>
+<ul>
+<li>Source Sans Pro (default): Modern, readable font</li>
+<li>Times New Roman: Classic, professional look</li>
+<li>Roboto: Contemporary, minimal style</li>
+</ul>
+</li>
+<li>
+<p><strong>Layout Features</strong>:</p>
+<ul>
+<li>Optimized margins (0.5” sides, 0.66” top/bottom)</li>
+<li>Customizable section spacing</li>
+<li>Single-line header with inline contact details</li>
+<li>Optional page numbering and footer</li>
+</ul>
+</li>
+<li>
+<p><strong>Entry Types</strong>:</p>
+<ul>
+<li>Standard entries (detailed_entries, brief_entries)</li>
+<li>Honor entries (honor_entries) for awards and achievements</li>
+<li>Skill entries (skill_entries) for expertise sections</li>
+</ul>
+</li>
+<li>
+<p><strong>YAML Options</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="at">  vitae:</span><span class="fu">:crisp</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="at">    </span><span class="fu">page_total</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">      # show "page X of Y"</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="at">    </span><span class="fu">show_footer</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">     # include footer</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">classoption</span><span class="kw">:</span><span class="at"> </span><span class="st">"roboto"</span><span class="co">  # choose font: "times", "roboto"</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">spacing_after_section_title</span><span class="kw">:</span><span class="at"> -1mm</span><span class="co"> # adjust section spacing</span></span></code></pre></div>
+<p>adds a custom, compact resume format <code>crisp</code>.</p>
+</li>
+</ul>
+<p>Important notes - This repository is based on the upstream ‘vitae’ project by Mitchell O’Hara-Wild: <a href="https://github.com/mitchelloharawild/vitae" class="external-link uri">https://github.com/mitchelloharawild/vitae</a> - The content in this fork includes additional local changes. The main change in this fork is the addition of the <code>crisp</code> output format (see details below).</p>
+<p>What I added in this fork - New R Markdown output format: <code><a href="reference/crisp.html">vitae::crisp</a></code> - Purpose: a compact, black-and-white resume template based on the Awesome-CV layout but adjusted for tighter margins, denser typography, and an inline contact/header layout. - Files added/modified for the new format are under: - <code>inst/rmarkdown/templates/crisp/</code> (template, resources, skeleton) - <code>R/crisp.R</code> (the R wrapper that registers the output format) - Key features: - Tighter document margins: left/right = 0.5in, top/bottom = 0.66in - Monochrome defaults (fonts and section highlight colors set to black in the template) - A YAML variable <code>spacing_after_section_title</code> to let you reduce vertical spacing below section headers, e.g. <code>spacing_after_section_title: "-1mm"</code> - Compact default header that keeps name large and prints position + contact items inline (they naturally wrap when too long)</p>
 <p>How to install (development)</p>
 <p>You can use the development version from this repository with <code>remotes</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mitchelloharawild/vitae"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"fortune9/vitaeR"</span><span class="op">)</span></span>
 <span><span class="co"># if you are working from a local clone and want to load the package:</span></span>
 <span><span class="co"># devtools::load_all('.')</span></span></code></pre></div>
 <p>Note: building/using the templates requires a working LaTeX setup (XeLaTeX recommended). See the <code>tinytex</code> package for a simple setup option if you don’t already have LaTeX installed.</p>
-<p>Quick example: using the new awesomeresume format</p>
+<p>Quick example: using the new crisp format</p>
 <p>Create an R Markdown document with the following YAML header:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Resume"</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="at">  vitae:</span><span class="fu">:awesomeresume</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Jane"</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="fu">surname</span><span class="kw">:</span><span class="at"> </span><span class="st">"Doe"</span></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="fu">position</span><span class="kw">:</span><span class="at"> </span><span class="st">"Data Scientist"</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">address</span><span class="kw">:</span><span class="at"> </span><span class="st">"City, Country"</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">email</span><span class="kw">:</span><span class="at"> </span><span class="st">"jane@example.com"</span></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">github</span><span class="kw">:</span><span class="at"> </span><span class="st">"janedoe"</span></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">section_spacing</span><span class="kw">:</span><span class="at"> </span><span class="st">"-1mm"</span><span class="co">  # optional: reduces spacing beneath section headings</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Resume"</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="at">  vitae:</span><span class="fu">:crisp</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="fu">firstname</span><span class="kw">:</span><span class="at"> </span><span class="st">"Jane"</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">surname</span><span class="kw">:</span><span class="at"> </span><span class="st">"Doe"</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">position</span><span class="kw">:</span><span class="at"> </span><span class="st">"Data Scientist"</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">address</span><span class="kw">:</span><span class="at"> </span><span class="st">"City, Country"</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="fu">email</span><span class="kw">:</span><span class="at"> </span><span class="st">"jane@example.com"</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="fu">github</span><span class="kw">:</span><span class="at"> </span><span class="st">"janedoe"</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="fu">spacing_after_section_title</span><span class="kw">:</span><span class="at"> </span><span class="st">"-1mm"</span><span class="co">  # optional: reduces spacing beneath section headings</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>Then render with:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">'your_resume.Rmd'</span><span class="op">)</span></span></code></pre></div>
-<p>Development notes &amp; testing - The awesomeresume format copies supporting files from <code>inst/rmarkdown/templates/awesomeresume/skeleton/</code> at render time. The class file shipped with the skeleton is named <code>awesome-resume.cls</code> and is requested by the template’s <code>\\documentclass{awesome-resume}</code> line. - If you see LaTeX errors about missing class files, ensure the working directory contains <code>awesome-resume.cls</code> or render via the provided output format so the supporting files are copied automatically.</p>
-<p>Want different defaults? - The template intentionally sets monochrome defaults. If you prefer colored accents or a different margin setup, edit <code>inst/rmarkdown/templates/awesomeresume/resources/awesomeresume-cv.tex</code>.</p>
+<p>Development notes &amp; testing - The crisp format copies supporting files from <code>inst/rmarkdown/templates/crisp/skeleton/</code> at render time. The class file shipped with the skeleton is named <code>crisp.cls</code> and is requested by the template’s <code>\\documentclass{crisp}</code> line. - If you see LaTeX errors about missing class files, ensure the working directory contains <code>crisp.cls</code> or render via the provided output format so the supporting files are copied automatically.</p>
+<p>Want different defaults? - The template intentionally sets monochrome defaults. If you prefer colored accents or a different margin setup, edit <code>inst/rmarkdown/templates/crisp/resources/crisp-cv.tex</code>.</p>
 <p>License &amp; upstream - This fork follows the same license and contribution policies as the upstream <code>vitae</code> project. Please refer to the upstream repository for contributing guidelines and the contributor code of conduct.</p>
 <p>Acknowledgements - Original project: Mitchell O’Hara-Wild — <a href="https://github.com/mitchelloharawild/vitae" class="external-link uri">https://github.com/mitchelloharawild/vitae</a> - Awesome-CV (LaTeX template) — <a href="https://github.com/posquit0/Awesome-CV" class="external-link uri">https://github.com/posquit0/Awesome-CV</a> trailing dot in brief entries.</p>
+</div>
+</div>
 </div>
 
   </div>

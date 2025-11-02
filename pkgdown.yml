@@ -2,10 +2,11 @@ pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
+  crisp: crisp.html
   data: data.html
   extending: extending.html
   vitae: vitae.html
-last_built: 2025-10-24T06:07Z
+last_built: 2025-11-02T06:48Z
 urls:
-  reference: https://pkg.mitchelloharawild.com/vitae/reference
-  article: https://pkg.mitchelloharawild.com/vitae/articles
+  reference: https://fortune9.github.io/vitaeR/reference
+  article: https://fortune9.github.io/vitaeR/articles

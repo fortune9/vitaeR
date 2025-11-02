@@ -52,6 +52,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/crisp.html">Using the Crisp Template</a>
+    </li>
+    <li>
       <a href="../articles/data.html">Data sources for vitae</a>
     </li>
     <li>
@@ -166,7 +169,7 @@ package</a>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pkgsearch</span><span class="fu">::</span><span class="fu">ps</span><span class="op">(</span><span class="st">"O'Hara-Wild"</span>,size <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu">map_lgl</span><span class="op">(</span><span class="va">package_data</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"Mitchell O'Hara-Wild"</span>, <span class="va">.x</span><span class="op">$</span><span class="va">Author</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/cv_entries.html">brief_entries</a></span><span class="op">(</span></span>
 <span>    what <span class="op">=</span> <span class="va">title</span>, </span>
 <span>    when <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu">year</span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, </span>
