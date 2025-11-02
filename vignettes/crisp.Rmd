@@ -155,6 +155,7 @@ position: "Data Scientist"
 email: "jane.doe@email.com"
 github: "janedoe"
 spacing_after_section_title: "-1mm"
+headcolor: "00FF00" # green
 ---
 
 # Education
@@ -162,8 +163,8 @@ spacing_after_section_title: "-1mm"
 ```{r}
 tribble(
   ~degree, ~uni, ~loc, ~dates, ~details,
-  "Ph.D.", "Stats University", "USA", "2020-2024", 
-  c("Thesis on Advanced Analytics")
+  "Ph.D.", "Stats University", "USA", "2020-2024", c("Thesis on Advanced Analytics"),
+  "B.S in Biology", "Biology University", "USA", "2016-2020", c("Thesis on Biology")
 ) %>% 
   detailed_entries(
     what = degree,
@@ -180,7 +181,10 @@ tribble(
 tribble(
   ~category, ~details,
   "Analysis", "Statistics, Machine Learning, Data Mining",
-  "Programming", "R, Python, SQL"
+  "Programming", "R, Python, SQL",
+  "Reserch", "Biology, Genetics",
+  "Visualization", "Rmarkdown, streamlit, shiny",
+  "DevOps", "Github, AWS, GCP, docker, nextflow"
 ) %>%
   skill_entries(
     type = category,
@@ -193,7 +197,10 @@ tribble(
 ```{r}
 tribble(
   ~award, ~year, ~org, ~loc,
-  "Best Paper", "2023", "Conference", "International"
+  "Best Paper1", "2023", "Conference4", "International",
+  "Best Paper2", "2022", "Conference3", "International",
+  "Best Paper3", "2021", "Conference2", "International",
+  "Best Paper4", "2020", "Conference1", "International"
 ) %>%
   honor_entries(
     what = award,
@@ -208,7 +215,9 @@ tribble(
 ```{r}
 tribble(
   ~title, ~year, ~journal,
-  "Amazing Research Paper", "2023", "Journal of Data Science"
+  "Amazing Research Paper", "2023", "Journal of Data Science",
+  "Bioinformatics Paper", "2022", "Journal of Bioinformatics",
+  "Genetics Paper","2020","Journal of Genetics"
 ) %>%
   brief_entries(
     what = title,

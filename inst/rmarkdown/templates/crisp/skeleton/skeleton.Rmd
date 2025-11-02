@@ -11,7 +11,7 @@ github: fortune9
 linkedin: linkedin-id
 papersize: "letterpaper" # choose us letterpaper, otherwise A4
 fontsize: 10pt
-classoption: "roboto" # choice: [roboto, times], set font family
+classoption: "times" # choice: [roboto, times], set font family
 # Section spacing: LaTeX vspace after section header, e.g. '-1mm' or '0.5mm'
 section_spacing: "-1mm"
 geometry: left=0.5in, right=0.5in, top=0.5in, bottom=0.5in
@@ -36,9 +36,10 @@ Short profile text goes here. This template uses tighter margins and black-only 
 ```{r}
 tribble(
   ~Year, ~Role, ~Org,
-  2020, "Scientist", "Example Institute"
+  2020, "Scientist", "Example Institute",
+  2015-2020, "Engineer", "Example AI Institute"
 ) %>%
-  brief_entries("{Role}", Year, Org)
+  brief_entries(Role, Year, Org)
 ```
 
 # Education
@@ -46,8 +47,8 @@ tribble(
 ```{r}
 tribble(
   ~degree, ~uni, ~loc, ~dates, ~details,
-  "Ph.D.", "Stats University", "USA", "2020-2024", 
-  c("Thesis on Advanced Analytics")
+  "Ph.D.", "Stats University", "USA", "2020-2024", c("Thesis on Advanced Analytics"),
+  "B.S in Biology", "Biology University", "USA", "2016-2020", c("Thesis on Biology")
 ) %>% 
   detailed_entries(
     what = degree,
@@ -64,7 +65,10 @@ tribble(
 tribble(
   ~category, ~details,
   "Analysis", "Statistics, Machine Learning, Data Mining",
-  "Programming", "R, Python, SQL"
+  "Programming", "R, Python, SQL",
+  "Reserch", "Biology, Genetics",
+  "Visualization", "Rmarkdown, streamlit, shiny",
+  "DevOps", "Github, AWS, GCP, docker, nextflow"
 ) %>%
   skill_entries(
     type = category,
@@ -77,12 +81,31 @@ tribble(
 ```{r}
 tribble(
   ~award, ~year, ~org, ~loc,
-  "Best Paper", "2023", "Conference", "International"
+  "Best Paper1", "2023", "Conference1", "International",
+  "Best Paper2", "2022", "Conference2", "International",
+  "Best Paper3", "2021", "Conference3", "International",
+  "Best Paper4", "2020", "Conference4", "International"
 ) %>%
   honor_entries(
     what = award,
     when = year,
     with = org,
     where = loc
+  )
+```
+
+# Publications
+
+```{r}
+tribble(
+  ~title, ~year, ~journal,
+  "Amazing Research Paper", "2023", "Journal of Data Science",
+  "Bioinformatics Paper", "2022", "Journal of Bioinformatics",
+  "Genetics Paper","2020","Journal of Genetics"
+) %>%
+  brief_entries(
+    what = title,
+    when = year,
+    with = journal
   )
 ```
