@@ -53,10 +53,10 @@ A clean, modern resume template with extensive customization options:
   ```yaml
   output:
     vitae::crisp:
-      font: roboto          # options: times, roboto, default
       page_total: true      # show "page X of Y"
       show_footer: true     # include footer
-      section_spacing: -1mm # adjust section spacing
+  classoption: "roboto"  # choose font: "times", "roboto"
+  spacing_after_section_title: -1mm # adjust section spacing
   ```
 adds a custom, compact resume format `crisp`.
 
@@ -81,8 +81,8 @@ What I added in this fork
     - Tighter document margins: left/right = 0.5in, top/bottom = 0.66in
     - Monochrome defaults (fonts and section highlight colors set to
       black in the template)
-    - A YAML variable `section_spacing` to let you reduce vertical
-      spacing below section headers, e.g. `section_spacing: "-1mm"`
+    - A YAML variable `spacing_after_section_title` to let you reduce vertical
+      spacing below section headers, e.g. `spacing_after_section_title: "-1mm"`
     - Compact default header that keeps name large and prints position
       + contact items inline (they naturally wrap when too long)
 
@@ -92,7 +92,7 @@ You can use the development version from this repository with `remotes`:
 
 ```r
 # install.packages("remotes")
-remotes::install_github("mitchelloharawild/vitae")
+remotes::install_github("fortune9/vitaeR")
 # if you are working from a local clone and want to load the package:
 # devtools::load_all('.')
 ```
@@ -110,13 +110,13 @@ Create an R Markdown document with the following YAML header:
 title: "Resume"
 output:
   vitae::crisp: default
-name: "Jane"
+firstname: "Jane"
 surname: "Doe"
 position: "Data Scientist"
 address: "City, Country"
 email: "jane@example.com"
 github: "janedoe"
-section_spacing: "-1mm"  # optional: reduces spacing beneath section headings
+spacing_after_section_title: "-1mm"  # optional: reduces spacing beneath section headings
 ---
 ```
 
@@ -129,10 +129,10 @@ rmarkdown::render('your_resume.Rmd')
 Development notes & testing
 - The crisp format copies supporting files from
   `inst/rmarkdown/templates/crisp/skeleton/` at render time. The
-  class file shipped with the skeleton is named `awesome-resume.cls` and
-  is requested by the template's `\\documentclass{awesome-resume}` line.
+  class file shipped with the skeleton is named `crisp.cls` and
+  is requested by the template's `\\documentclass{crisp}` line.
 - If you see LaTeX errors about missing class files, ensure the working
-  directory contains `awesome-resume.cls` or render via the provided
+  directory contains `crisp.cls` or render via the provided
   output format so the supporting files are copied automatically.
 
 Want different defaults?

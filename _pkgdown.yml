@@ -1,4 +1,4 @@
-url: https://pkg.mitchelloharawild.com/vitae
+url: https://fortune9.github.io/vitaeR/
 
 template:
   params:
@@ -15,6 +15,8 @@ authors:
     href: http://mitchelloharawild.com
   Rob Hyndman:
     href: http://robjhyndman.com
+  Zhenguo Zhang:
+    href: https://github.com/fortune9/
 
 reference:
 - title: Templates
@@ -35,3 +37,5 @@ reference:
     - brief_entries
     - detailed_entries
     - bibliography_entries
+    - skill_entries
+    - honor_entries
