@@ -50,7 +50,8 @@ Create your resume by setting up an R Markdown document with the following YAML 
 ```yaml
 ---
 title: "Your Name"
-author: Your Name
+firstname: "Joe"
+lastname: "Dean"
 date: "`r Sys.Date()`"
 output: vitae::crisp
 position: "Data Scientist"
