@@ -193,6 +193,14 @@ $endif$
     \ifstrequal{#1}{bottomspace}{\vspace{\acvEntriesBottomSkip}}{}
 }
 
+% define a command to set spacing after each cventry based on OS
+\usepackage{ifplatform}
+\ifwindows
+  \newcommand{\cventryspacing}{-1.8mm}
+\else
+  \newcommand{\cventryspacing}{-5.8mm}
+\fi
+
 % Change the definition of \cventry to reduce spacing among sub-sections
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \renewcommand*{\cventry}[5]{
@@ -207,7 +215,7 @@ $endif$
     \ifempty{#5}{}{\\ \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}}%
   \end{tabular*}%
   % adjust this value to change spacing after each entry
-  \ifempty{#5}{\vspace{0.1mm}}{\vspace{-1.8mm}}
+  \ifempty{#5}{\vspace{0.1mm}}{\vspace{\cventryspacing}}%
 }
 
 % Modify the environment cvskill to allow more space after the section title
